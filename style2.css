@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css?family=Staatliches');
+
+.calc {
+    display: flex;
+    margin: auto;
+    background-color: blanchedalmond;
+    padding: 1rem;
+    max-width: 14rem;
+    flex-direction: column;
+    border-radius: 0.5rem;
+}
+
+#display {
+    background-color: cornsilk;
+    font-family: 'Staatliches', cursive;
+    padding: 0.5rem;
+    border: 1px solid gray;
+    border-radius: 0.2rem;
+    margin: 0.5rem; 
+    text-align: right;
+}
+
+.keyboard {
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+}
+
+.keyboard button {
+    border-radius: 0.2rem;
+    margin: 0.25rem;
+    padding: 0.8rem;
+    font-family: 'Staatliches', cursive;
+    outline: none;
+}
+
+.action {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.action2 {
+    display: flex;
+    flex-direction: column;
+}
+
+.keyboard .numeric div {
+    display: flex;
+}
+
+.keyboard .numeric div button {
+    display: flex;
+    flex: 3;
+}
+
+.keyboard .action2 div {
+    display: flex;
+    flex-direction: column;
+}
+

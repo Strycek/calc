@@ -6,6 +6,8 @@
     padding: 1rem;
     max-width: 20rem;
     flex-direction: column;
+    border-radius: 0.3rem;
+    box-shadow: inset 3px 2px 5px rgb(22, 53, 73), inset -3px -2px 3px rgb(22, 53, 73);
 }
 
 #display {
@@ -13,7 +15,7 @@
     padding: 1rem;
     border: 1px solid black;
     margin-bottom: 1rem;
-    border-radius: 0.5rem;
+    border-radius: 0.3rem;
     font-family: 'Orbitron', sans-serif;
     text-align: end;
     box-shadow: inset 1px 1px 1px black, inset -1px -1px 1px white;
@@ -49,7 +51,7 @@
 }
 
         .keyboard .numeric div button:active{
-            box-shadow: inset -1px -1px 1px white;
+            box-shadow: inset -1px -1px 1px white; /* pozicce osa x y rozmazání barva*/
             color: #ddd;
         
         }
