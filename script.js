@@ -1,8 +1,8 @@
 document.addEventListener("DOMContentLoaded", function (event) {
     let buttons = document.querySelectorAll('button');
-    let display = document.getElementById('display');
-    let action;
-    let memory = 0;
+    View.init();
+
+
     let handler = function (e) {
         let value = e.target.textContent
         switch (value) {
@@ -17,10 +17,23 @@ document.addEventListener("DOMContentLoaded", function (event) {
             case '8':
             case '9':
                 input(value); break;
-            case 'C': clear(); break;
-            case '+': plus(); break;
-            case '=': eq(); break;
-            case '-': minus(); break;
+            case 'C':
+                model.clear();
+                View.clear();
+                break;
+
+            case '+':
+            case '-':
+            case '*':
+            case '/':
+                model.num1 = View.get();
+                View.clear();
+                model.oper = value;
+                break;
+            case '=':
+                model.num2 = View.get();
+                display.innerHTML = model.doit();
+                break;
         }
     }
     for (i = 0; i < buttons.length; i++) {
@@ -34,36 +47,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
         display.innerHTML = display.innerHTML + value;
     }
 
-    function clear() {
-        display.innerHTML = '0';
-    }
 
-    function plus() {
-        console.log(memory);
-        memory = memory + parseInt(display.innerHTML, 10);
-        clear();
-        action = '+';
-
-    }
-
-    function eq() {
-        memory = memory + parseInt(display.innerHTML, 10);
-        display.innerHTML = memory;
-        memory = 0;
-    }
-
-    function minus() {
-        console.log(memory);
-        if (memory == 0) {
-            memory = parseInt(display.innerHTML, 10);
-        }
-        else {
-            memory = memory - parseInt(display.innerHTML, 10);
-        };
-
-        clear();
-        action = '-';
-    }
 
 });
 
