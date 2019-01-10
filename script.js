@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
     let buttons = document.querySelectorAll('button');
     View.init();
 
+    let doClear = false;
 
     let handler = function (e) {
         let value = e.target.textContent
@@ -16,7 +17,27 @@ document.addEventListener("DOMContentLoaded", function (event) {
             case '7':
             case '8':
             case '9':
-                input(value); break;
+            case '.':
+                if (value == '.' && View.get().match(/\./)) {
+                    break;
+                }
+
+                if (View.get() == '0') {
+                    View.set('');
+                }
+
+                if (value == '.' && View.get() == '') {
+                    View.set('0');
+                }
+
+                if (doClear) {
+                    doClear = false
+                    View.set(value);
+                }
+                else {
+                    View.set(View.get() + value);
+                }
+                break;
             case 'C':
                 model.clear();
                 View.clear();
@@ -26,27 +47,24 @@ document.addEventListener("DOMContentLoaded", function (event) {
             case '-':
             case '*':
             case '/':
-                model.num1 = View.get();
-                View.clear();
+                model.num1 = View.getNumber();
+                doClear = true;
                 model.oper = value;
                 break;
             case '=':
-                model.num2 = View.get();
-                display.innerHTML = model.doit();
+                model.num2 = View.getNumber();
+                View.set(model.doit());
+                break;
+            case 'sin':
+                model.num1 = View.getNumber();
+                model.oper = value;
+                View.set(model.doit());
                 break;
         }
     }
     for (i = 0; i < buttons.length; i++) {
         buttons[i].addEventListener('click', handler)
     }
-
-    function input(value) {
-        if (display.innerHTML == '0') {
-            display.innerHTML = ''
-        }
-        display.innerHTML = display.innerHTML + value;
-    }
-
 
 
 });

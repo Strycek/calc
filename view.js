@@ -3,9 +3,11 @@ let View = {
         this.display.innerHTML = 0;
     },
     get: function () {
-        return parseInt(this.display.innerHTML, 10);
+        return this.display.innerHTML;
     },
-
+    getNumber: function () {
+        return parseFloat(this.display.innerHTML, 10);
+    },
     set: function (value) {
         this.display.innerHTML = value;
     },
