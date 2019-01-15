@@ -61,6 +61,9 @@ describe("Model test", function () {
 
   /*
   
+  chyba - a . 
+  cyba - . sin NaN 
+
     model.num1 = -6;
     model.oper = '/';
     model.num2 = 54;

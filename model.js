@@ -28,7 +28,7 @@ let model = {
         return result
     }
 }
-
+/*
 if (module) {
     module.exports = model;
-}
+}*/
