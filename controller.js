@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function (event) {
-    let buttons = document.querySelectorAll('button');
+  
     View.init();
 
     let doClear = false;
@@ -21,17 +21,17 @@ document.addEventListener("DOMContentLoaded", function (event) {
                 if (value == '.' && View.get().match(/\./)) {
                     break;
                 }
-
                 if (View.get() == '0') {
                     View.set('');
                 }
-
                 if (value == '.' && View.get() == '') {
                     View.set('0');
                 }
-
                 if (doClear) {
                     doClear = false
+                    if (value == '.') {
+                        value = '0.';
+                    }
                     View.set(value);
                 }
                 else {
@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
                 }
                 break;
             case 'C':
-                model.clear();
+                Model.clear();
                 View.clear();
                 break;
 
@@ -47,21 +47,22 @@ document.addEventListener("DOMContentLoaded", function (event) {
             case '-':
             case '*':
             case '/':
-                model.num1 = View.getNumber();
+                Model.setNum1(View.getNumber());
                 doClear = true;
-                model.oper = value;
+                Model.setOper(value);
                 break;
             case '=':
-                model.num2 = View.getNumber();
-                View.set(model.doit());
+                Model.setNum2(View.getNumber());
+                View.set(Model.doit());
                 break;
             case 'sin':
-                model.num1 = View.getNumber();
-                model.oper = value;
-                View.set(model.doit());
+                Model.setNum1(View.getNumber());
+                Model.setOper(value);
+                View.set(Model.doit());
                 break;
         }
     }
+    let buttons = document.querySelectorAll('button');
     for (i = 0; i < buttons.length; i++) {
         buttons[i].addEventListener('click', handler)
     }
